@@ -2,8 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, TextInput, FlatList, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 
+import Header from './components/Header';
+
 export default function App() {
-  const [toDo, setToDo]=useState([
+  const [toDos, setToDos]=useState([
     {
       id: 1,
       task: "Complete project proposal",
@@ -43,17 +45,18 @@ export default function App() {
 
   ])
 
-  
   return (
     <View style={styles.container}>
-     {/* {header} */}
-
-     <Text>hello world</Text>
-
+     <Header/>
      <View style={styles.content}>
       {/* {form} */}
       <View style={styles.list}>
-        <FlatList/>
+        <FlatList
+        data={toDos}
+        renderItem={({item})=>(
+          <Text>{item.task}</Text>
+        )}
+        />
       </View>
      </View>
       
@@ -63,11 +66,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop:200,
-    marginLeft:200,
+   
     flex: 1,
     backgroundColor: '#fff',
     
+  },
+
+  content:{
+
+    padding:40,
+
+  },
+  list:{
+    marginTop:20,
+
   }
   
 
