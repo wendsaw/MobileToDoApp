@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, TextInput, FlatList, TouchableOpacity }
 import { useState } from 'react';
 
 import Header from './components/Header';
-
+import TodoItems from './components/TodoItems';
 export default function App() {
   const [toDos, setToDos]=useState([
     {
@@ -45,16 +45,25 @@ export default function App() {
 
   ])
 
+  const pressHandler=(id)=>{
+    setToDos((prevTodos)=>{
+
+      return prevTodos.filter(todo =>todo.id != id)
+    })
+
+  }
+
   return (
     <View style={styles.container}>
      <Header/>
      <View style={styles.content}>
-      {/* {form} */}
+      <Text>hello</Text>
       <View style={styles.list}>
         <FlatList
         data={toDos}
         renderItem={({item})=>(
-          <Text>{item.task}</Text>
+          <TodoItems item={item} pressHandler={pressHandler}/>
+        
         )}
         />
       </View>
