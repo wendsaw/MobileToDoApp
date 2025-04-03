@@ -3,68 +3,59 @@ import { StyleSheet, Text, View, Button, TextInput, FlatList, TouchableOpacity }
 import { useState } from 'react';
 
 export default function App() {
-  const [name, setName]=useState('wend');
-  const [age, setAge]=useState('30');
-  const [person, setPerson]=useState([
-    {name:"wend", age:23, id:1},
-    {name:"hello", age:25 ,id:2},
-    {name:"love", age:25, id :3},
-    {name:"wend", age:23, id:4},
-    {name:"hello", age:25 ,id:5},
-    {name:"love", age:25, id :6},
-    {name:"wend", age:23, id:7},
-    {name:"hello", age:25 ,id:8},
-    {name:"love", age:25, id :9},
-    {name:"wend", age:23, id:10},
-    {name:"hello", age:25 ,id:11},
-    {name:"love", age:25, id :12},
-    {name:"wend", age:23, id:13},
-    {name:"hello", age:25 ,id:14},
-    {name:"love", age:25, id :15}
+  const [toDo, setToDo]=useState([
+    {
+      id: 1,
+      task: "Complete project proposal",
+      completed: false,
+      priority: "high",
+      dueDate: "2025-04-10"
+    },
+    {
+      id: 2,
+      task: "Buy groceries",
+      completed: true,
+      priority: "medium",
+      dueDate: "2025-04-05"
+    },
+    {
+      id: 3,
+      task: "Schedule team meeting",
+      completed: false,
+      priority: "high",
+      dueDate: "2025-04-07"
+    },
+    {
+      id: 4,
+      task: "Workout for 30 minutes",
+      completed: false,
+      priority: "low",
+      dueDate: "2025-04-06"
+    },
+    {
+      id: 5,
+      task: "Read 20 pages of a book",
+      completed: true,
+      priority: "low",
+      dueDate: "2025-04-04"
+    }
+
+
   ])
 
-  const pressHandler=(id)=>{
-    console.log(id);
-    setPerson((prePeople)=>{
-
-      return prePeople.filter(person =>person.id !=id)
-    })
-  }
+  
   return (
     <View style={styles.container}>
-      <FlatList
-      // keyExtractor={(item)=>item.id}
-      numColumns={3}
-      data={person}
-      renderItem={({item})=>(
-        <TouchableOpacity onPress={()=>{pressHandler(item.id)}}>
+     {/* {header} */}
 
-        <View style={styles.items}>
-        <Text> {item.name}</Text>
-        <Text> {item.age}</Text>
-        
+     <Text>hello world</Text>
 
+     <View style={styles.content}>
+      {/* {form} */}
+      <View style={styles.list}>
+        <FlatList/>
       </View>
-      </TouchableOpacity>
-
-      )}
-
-      />
-
-{/* <ScrollView>
-      {person.map(per=>(
-
-          <View style={styles.items} key={per.id}>
-            <Text> {per.name}</Text>
-            <Text> {per.age}</Text>
-
-          </View>
-        )
-        
-
-      )}
-      </ScrollView> */}
-
+     </View>
       
     </View>
   );
@@ -72,21 +63,12 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop:200,
+    marginLeft:200,
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop:40,
-    paddingHorizontal:20
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-  items:{
-    marginTop:24,
-    padding:30,
-    backgroundColor:"pink",
-    fontSize:24,
-    marginHorizontal:10,
-    marginTop:24,
-
+    
   }
+  
 
 });
