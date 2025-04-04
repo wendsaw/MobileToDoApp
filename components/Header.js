@@ -10,10 +10,9 @@ return(
 
     <View style={styles.header} >
 
-        <Text style={styles.title}> my toDos</Text>
+        <Text style={styles.title}> My Todos</Text>
     </View>
 )
-
 
 
 }

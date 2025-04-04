@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import Header from './components/Header';
 import TodoItems from './components/TodoItems';
+import AddTodo from './components/AddTodo';
 export default function App() {
   const [toDos, setToDos]=useState([
     {
@@ -53,11 +54,22 @@ export default function App() {
 
   }
 
+  const submitHandler=(text)=>{
+
+    setToDos((prevTodos)=>{
+
+return [
+  {text:text , id:Math.random().toString()},
+  ...prevTodos
+]
+
+    })
+  }
   return (
     <View style={styles.container}>
      <Header/>
      <View style={styles.content}>
-      <Text>hello</Text>
+      <AddTodo submitHandler={submitHandler}/>
       <View style={styles.list}>
         <FlatList
         data={toDos}
