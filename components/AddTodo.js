@@ -1,14 +1,14 @@
 
-import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import { StyleSheet, View, Button, TextInput} from 'react-native';
 import { useState } from 'react';
 
 const AddTodo = ({submitHandler}) => {
 
-    const [text, settext]=useState('')
+    const [task, setTask]=useState('')
 
     const handleChange=(val)=>{
 
-        settext(val)
+        setTask(val)
 
 
 
@@ -23,7 +23,7 @@ const AddTodo = ({submitHandler}) => {
             placeholder='add new todo....'
        onChangeText={handleChange}
             />
-            <Button onPress={()=>submitHandler(text)} title='Add Todo' color='coral'/>
+            <Button onPress={()=>submitHandler(task)} title='Add Todo' color='coral'/>
 
 
         </View>
